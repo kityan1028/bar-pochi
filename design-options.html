@@ -1,0 +1,1280 @@
+<!doctype html>
+<html lang="ja" data-lang="ja" data-title-en="Thursday photo options | BAR POCHI">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>木曜ごはんの写真の見せ方｜BAR POCHI</title>
+<meta name="description" content="BAR POCHIでは毎週木曜日、お食事（ご飯）もお楽しみいただけます。" data-en-content="Every Thursday, BAR POCHI also serves meals.">
+<meta name="theme-color" content="#0d0b09">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BAR POCHI">
+<meta property="og:title" content="木曜ごはん｜BAR POCHI（すすきの）">
+<meta property="og:description" content="BAR POCHIでは毎週木曜日、お食事（ご飯）もお楽しみいただけます。">
+<meta property="og:locale" content="ja_JP">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="assets/img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Shippori+Mincho:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/css/style.css?v=20261006-3">
+<script>(function(d){d.className+=' js';var l=null;try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('pochi-lang')}catch(e){}if(l!=='ja'&&l!=='en'){l=/^ja\b/i.test(navigator.language||'ja')?'ja':'en'}d.setAttribute('data-lang',l);d.lang=l;setTimeout(function(){if(!window.PochiMain){d.classList.remove('js')}if(!window.PochiSparkle){d.classList.add('st-fallback')}},3000)})(document.documentElement);</script>
+<style>
+.opt-label { position: relative; z-index: 5; background: #1e1811; border-top: 1px solid var(--amber); border-bottom: 1px solid var(--line); padding: 18px 0; }
+.opt-label .container { display: flex; gap: 16px; align-items: flex-start; padding: 0 var(--gutter); }
+.opt-letter { flex-shrink: 0; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--amber); color: #1a1209; font-family: var(--ff-en); font-size: 20px; font-weight: 600; }
+.opt-label strong { display: block; font-weight: 500; color: var(--amber-hi); letter-spacing: 0.1em; }
+.opt-label p { margin: 4px 0 0; font-size: 14px; color: var(--text-dim); line-height: 1.8; }
+
+/* ===== 案A: frame ===== */
+/* ---------- 木曜ごはん：額装ギャラリー（tg-frame） ----------
+   暗い壁に、三枚の写真を額に入れて掛けたような見せ方。
+   ・額＝暗いマット＋金の二重の細線。写真の縁にも細い金線
+   ・写真は切り取らず、撮ったままの形で（お皿が欠けない）。明るさ・色もそのまま
+   ・白い背景だけ、温かい色でほんのりなじませる（黒を重ねないので、灰色にくすまない）
+   ・額の上の小さな灯りが、スクロールで一枚ずつ灯る（.lightup）。壁の灯りも一緒に
+   ・PC は三枚を横一列に、真ん中を少し大きく・少し低く掛ける。タブレットは 2＋1、スマートフォンは縦に互い違い */
+
+.tg-frame {
+  --tg-frame-gap: clamp(20px, 3vw, 40px);
+  --tg-frame-mat: clamp(14px, 1.7vw, 22px);
+  overflow: hidden;
+}
+
+/* ---- 見出し（トップページの「ご案内」とそろえた形） ---- */
+.tg-frame .tg-frame__head {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 20px;
+  margin-bottom: clamp(56px, 8vw, 104px);
+  padding-bottom: clamp(18px, 2.4vw, 28px);
+}
+.tg-frame .tg-frame__head::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--line); transform-origin: left center;
+}
+.tg-frame .tg-frame__head.is-in::after { animation: tg-frame-draw 1.8s var(--ease-out) 0.3s both; }
+.tg-frame .tg-frame__eyebrow { grid-column: 1 / -1; justify-self: start; margin-bottom: 12px; }
+.tg-frame .tg-frame__heading {
+  margin: 0; font-weight: 500; color: var(--text);
+  font-size: clamp(22px, 3vw, 34px); line-height: 1.6; letter-spacing: 0.14em;
+}
+.tg-frame:lang(en) .tg-frame__heading {
+  font-family: var(--ff-en); font-weight: 400;
+  font-size: clamp(32px, 4.2vw, 50px); line-height: 1.1; letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.tg-frame .tg-frame__heading em { font-style: italic; color: var(--amber-hi); }
+.tg-frame .tg-frame__count {
+  padding-bottom: 0.45em;
+  font-family: var(--ff-en); font-style: italic; font-size: 17px; line-height: 1; letter-spacing: 0.08em;
+  color: var(--text-faint); white-space: nowrap;
+}
+
+/* ---- 並び（スマートフォン：縦に一枚ずつ、左右に少しずらして掛ける） ---- */
+.tg-frame .tg-frame__list {
+  margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(56px, 14vw, 76px);
+}
+.tg-frame .tg-frame__item {
+  position: relative; min-width: 0;
+  width: min(92%, 480px);
+}
+.tg-frame .tg-frame__item:nth-child(even) { justify-self: end; }
+
+/* ---- 額（マット＋金の二重線） ---- */
+.tg-frame .tg-frame__piece {
+  position: relative; isolation: isolate; margin: 0;
+  padding: var(--tg-frame-mat) var(--tg-frame-mat) 0;
+  background: var(--panel);
+  border: 1px solid color-mix(in srgb, var(--amber) 42%, transparent);
+  box-shadow:
+    inset 0 0 0 5px var(--panel),
+    inset 0 0 0 6px var(--line),
+    0 30px 46px -30px color-mix(in srgb, var(--bg) 96%, transparent),
+    0 2px 8px color-mix(in srgb, var(--bg) 60%, transparent);
+  transition: border-color 0.8s var(--ease);
+}
+
+/* 壁に当たる灯り：額の上に淡く。照明（--lit）と一緒に灯る */
+.tg-frame .tg-frame__piece::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  left: -8%; right: -8%; top: -96px; height: 250px;
+  background: radial-gradient(ellipse 50% 50% at 50% 46%, color-mix(in srgb, var(--amber) 12%, transparent), transparent 100%);
+  opacity: var(--lit);
+}
+
+/* 写真の窓：撮ったままの縦横比で（width/height 属性の比率を使う） */
+.tg-frame .tg-frame__window {
+  position: relative; z-index: 1; overflow: hidden;
+  background: var(--panel-2);
+}
+.tg-frame .tg-frame__img {
+  width: 100%; height: auto; max-width: none;
+  filter:
+    brightness(calc(0.14 + 0.86 * var(--lit)))
+    saturate(calc(0.35 + 0.7 * var(--lit)))
+    contrast(1.02);
+  transform: scale(1.001);
+  transition: transform 1.8s var(--ease-out);
+}
+/* 白い背景をなじませる：温かい色を「乗算」で重ねる。
+   中央（料理）はごく淡い生成り、外側ほど少し琥珀がかる。黒は使わないので灰色にならない */
+.tg-frame .tg-frame__window::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse farthest-corner at 50% 42%,
+    color-mix(in srgb, var(--amber-hi) 10%, transparent) 38%,
+    color-mix(in srgb, var(--amber-hi) 18%, transparent) 70%,
+    color-mix(in srgb, var(--amber-lo) 26%, transparent) 100%);
+  mix-blend-mode: multiply;
+  transition: opacity 1.2s var(--ease);
+}
+/* マットの切り口：写真の縁に細い金線と、上辺にわずかな陰 */
+.tg-frame .tg-frame__window::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--amber-hi) 40%, transparent),
+    inset 0 3px 8px -2px color-mix(in srgb, var(--amber-lo) 45%, transparent);
+}
+
+/* ---- 額の下部（少し広いマット）：番号と一行 ---- */
+.tg-frame .tg-frame__cap {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 12px;
+  padding: clamp(12px, 1.4vw, 16px) 2px clamp(14px, 1.7vw, 20px);
+}
+.tg-frame .tg-frame__no {
+  font-family: var(--ff-en); font-style: italic; font-weight: 400;
+  font-size: 21px; line-height: 1; letter-spacing: 0.04em; color: var(--amber-hi);
+}
+.tg-frame .tg-frame__rule {
+  flex: 0 0 auto; width: 22px; height: 1px; background: var(--amber);
+  transition: width 0.8s var(--ease-out);
+}
+.tg-frame .tg-frame__label {
+  font-size: 13px; line-height: 1.4; letter-spacing: 0.24em; color: var(--text-dim);
+}
+.tg-frame:lang(en) .tg-frame__label {
+  font-family: var(--ff-en); font-style: italic; font-size: 17px; letter-spacing: 0.03em;
+}
+
+/* ---- 額の上の小さな灯り（main.js が入れる .lamp-glow を、マットの上辺だけに） ---- */
+.tg-frame .tg-frame__piece .lamp-glow {
+  z-index: 0;
+  background: radial-gradient(ellipse 62% 38% at 50% 0%, color-mix(in srgb, var(--amber-hi) 20%, transparent), transparent 72%);
+  mix-blend-mode: screen;
+}
+/* 灯り方：一度ふっと瞬いてから、ゆっくり明るく（一枚ずつ順に） */
+.tg-frame .tg-frame__piece.lightup.is-lit {
+  animation: tg-frame-lamp 2.4s var(--ease) var(--tg-frame-delay, 0s) both;
+}
+.tg-frame .tg-frame__piece.lightup.no-anim { animation: none; }
+.tg-frame .tg-frame__item:nth-child(2) { --tg-frame-delay: 0.35s; }
+.tg-frame .tg-frame__item:nth-child(3) { --tg-frame-delay: 0.7s; }
+
+/* ---- 注記 ---- */
+.tg-frame .tg-frame__note {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin: clamp(48px, 6vw, 80px) 0 0;
+  font-size: 13px; letter-spacing: 0.14em; color: var(--text-faint);
+}
+.tg-frame .tg-frame__note::before {
+  content: ""; flex: 0 0 auto; width: 24px; height: 1px; background: var(--amber);
+}
+.tg-frame:lang(en) .tg-frame__note { font-family: var(--ff-en); font-style: italic; font-size: 16px; letter-spacing: 0.03em; }
+
+/* ---- ホバー：写真が少し寄り、額の金線が濃くなる ---- */
+@media (hover: hover) {
+  .tg-frame .tg-frame__piece:hover { border-color: color-mix(in srgb, var(--amber) 80%, transparent); }
+  .tg-frame .tg-frame__piece:hover .tg-frame__img { transform: scale(1.04); }
+  .tg-frame .tg-frame__piece:hover .tg-frame__window::before { opacity: 0.7; }
+  .tg-frame .tg-frame__piece:hover .tg-frame__rule { width: 40px; }
+}
+
+/* タブレット：二枚並べて（二枚目は少し下げる）、三枚目は下の中央に */
+@media (min-width: 640px) {
+  .tg-frame .tg-frame__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--tg-frame-gap); row-gap: clamp(56px, 7vw, 80px); align-items: start;
+  }
+  .tg-frame .tg-frame__item { width: auto; justify-self: stretch; }
+  .tg-frame .tg-frame__item:nth-child(2) { margin-top: 52px; }
+  .tg-frame .tg-frame__item:nth-child(3) {
+    grid-column: 1 / -1; justify-self: center;
+    width: calc((100% - var(--tg-frame-gap)) / 2);
+  }
+  .tg-frame .tg-frame__note { justify-content: flex-end; }
+}
+
+/* PC：三枚を横一列に。真ん中の一枚を少し大きく、少し低く掛ける（左・右・中の順に高さをずらす） */
+@media (min-width: 1100px) {
+  .tg-frame .tg-frame__list {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.16fr) minmax(0, 1fr);
+  }
+  .tg-frame .tg-frame__item:nth-child(2) { margin-top: clamp(48px, 4.6vw, 66px); }
+  .tg-frame .tg-frame__item:nth-child(3) {
+    grid-column: auto; justify-self: stretch; width: auto;
+    margin-top: clamp(18px, 1.8vw, 26px);
+  }
+  .tg-frame .tg-frame__no { font-size: 23px; }
+}
+
+@keyframes tg-frame-lamp {
+  0% { --lit: 0; }
+  7% { --lit: 0.38; }
+  12% { --lit: 0.1; }
+  20% { --lit: 0.52; }
+  100% { --lit: 1; }
+}
+@keyframes tg-frame-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* 動きを減らす設定：最初から灯った状態で静止 */
+@media (prefers-reduced-motion: reduce) {
+  .tg-frame .tg-frame__piece.lightup,
+  .tg-frame .tg-frame__piece.lightup.is-lit { --lit: 1; animation: none; }
+  .tg-frame .tg-frame__piece .lamp-glow { animation: none; }
+  .tg-frame .tg-frame__head::after { animation: none; transform: none; }
+  .tg-frame .tg-frame__img,
+  .tg-frame .tg-frame__rule { transition: none; }
+  .tg-frame .tg-frame__piece:hover .tg-frame__img { transform: scale(1.001); }
+}
+/* ===== 案B: spot ===== */
+/* ---------- 木曜ごはん：スポットライト（tg-spot） ----------
+   白い背景の料理写真を、暗い店内でペンダントライトに照らされた一皿に見せる。
+   ・写真の外側は、光だまりの形でゆっくり闇に溶かす（mask）
+   ・白い背景は「灯りの色の白」→ 外側ほど焦げ茶 → 闇へ（multiply）。
+     料理のある中心は色をほとんど変えないので、灰色や濁りが出ない
+   ・スクロールで見えると、サイト共通の「照明が灯る」演出（.lightup）で明かりがつく */
+
+.tg-spot {
+  overflow-x: clip;
+  /* 光だまりの形（楕円。中心は少し上＝灯りは真上から） */
+  --tg-pool: radial-gradient(closest-side at 50% 47%,
+    var(--bg) 44%,
+    color-mix(in srgb, var(--bg) 92%, transparent) 54%,
+    color-mix(in srgb, var(--bg) 74%, transparent) 65%,
+    color-mix(in srgb, var(--bg) 48%, transparent) 76%,
+    color-mix(in srgb, var(--bg) 22%, transparent) 87%,
+    color-mix(in srgb, var(--bg) 6%, transparent) 95%,
+    transparent 100%);
+}
+/* 上の導入文と同じ暗い背景がつづくので、上下の余白は少し詰める */
+.tg-spot.section { padding-top: clamp(24px, 4vw, 64px); padding-bottom: clamp(64px, 9vw, 128px); }
+.tg-spot .tg-spot__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "head" "lead" "side" "low" "note";
+  row-gap: 64px;
+}
+
+/* ---- 見出し：金の縦書き（日本語）／横組み（English） ---- */
+.tg-spot .tg-spot__head {
+  grid-area: head;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; column-gap: 20px;
+}
+.tg-spot .tg-spot__eyebrow { margin: 6px 0 0; }
+@media (max-width: 359px) { .tg-spot .tg-spot__eyebrow { letter-spacing: 0.22em; } }
+.tg-spot .tg-spot__title { margin: 0; font-weight: 500; color: var(--amber-hi); }
+.tg-spot .tg-spot__title [lang="ja"] {
+  display: block; writing-mode: vertical-rl; font-feature-settings: normal; line-break: strict;
+  padding-right: 22px;
+  font-size: clamp(22px, 1.1vw + 17px, 32px); line-height: 1.7; letter-spacing: 0.2em;
+  background: linear-gradient(180deg, var(--amber), transparent) right top / 1px 88px no-repeat;
+  text-shadow: 0 0 22px color-mix(in srgb, var(--amber) 28%, transparent);
+}
+.tg-spot .tg-spot__col { display: block; white-space: nowrap; }
+.tg-spot .tg-spot__col + .tg-spot__col { padding-top: 1.6em; }
+.tg-spot .tg-spot__title [lang="en"] {
+  display: block; max-width: 13em;
+  font-family: var(--ff-en); font-weight: 400; color: var(--text);
+  font-size: clamp(30px, 2.4vw + 18px, 46px); line-height: 1.08; letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.tg-spot .tg-spot__title em { display: block; font-style: italic; color: var(--amber-hi); }
+.tg-spot:lang(en) .tg-spot__head { grid-template-columns: minmax(0, 1fr); row-gap: 4px; }
+
+/* ---- 写真：暗い部屋の、灯りの下の一皿 ---- */
+.tg-spot .tg-spot__fig { position: relative; margin: 0; min-width: 0; align-self: start; }
+.tg-spot .tg-spot__fig--lead { grid-area: lead; }
+/* 小さな画面では、端が闇に溶けるぶん少しだけ外へ広げる（元の写真より大きくはしない） */
+@media (max-width: 479px) {
+  .tg-spot .tg-spot__fig--lead { margin-inline: calc(var(--gutter) * -0.75); }
+}
+.tg-spot .tg-spot__fig--side { grid-area: side; width: min(86%, 420px); justify-self: end; }
+.tg-spot .tg-spot__fig--low { grid-area: low; width: 92%; justify-self: start; }
+
+.tg-spot .tg-spot__frame {
+  position: relative; overflow: hidden; isolation: isolate;
+  aspect-ratio: 4 / 3;
+  container-type: inline-size;
+  -webkit-mask-image: var(--tg-pool);
+  mask-image: var(--tg-pool);
+}
+.tg-spot .tg-spot__fig--low .tg-spot__frame { aspect-ratio: 25 / 16; }
+
+.tg-spot .tg-spot__img {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%; max-width: none; object-fit: cover;
+  /* 消灯 → 点灯（--lit）に合わせて明るさ・色がのる。点灯後はほんの少しだけ鮮やかに */
+  filter:
+    brightness(calc(0.14 + 0.92 * var(--lit)))
+    saturate(calc(0.4 + 0.72 * var(--lit)))
+    contrast(calc(1 + 0.05 * var(--lit)));
+  transform-origin: 50% 47%;
+  animation: tg-spot-drift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+/* 大きい一枚：テーブルの上を、カメラがゆっくり横に流れる */
+.tg-spot .tg-spot__fig--lead .tg-spot__img {
+  inset: 0 auto 0 0; width: auto; height: 100%;
+  transform: translateX(calc((100cqw - 100%) * 0.5));
+  animation: tg-spot-pan 34s ease-in-out -9s infinite alternate;
+}
+.tg-spot .tg-spot__fig--low .tg-spot__img { animation-delay: -13s; }
+/* カレーは器の外の白が多いので、少しだけ寄って器で枠を満たす
+   （元の写真は幅480px。表示は最大452px＋ゆらぎ分で、480pxを超えて引き伸ばさない） */
+.tg-spot .tg-spot__fig--side .tg-spot__img {
+  inset: auto; left: 50%; top: 50%;
+  width: max(100%, min(118%, 452px)); height: auto;
+  translate: -50% -50%;
+}
+
+/* 白い背景を灯りの色に。外側ほど焦げ茶に沈んで闇へ（明るい琥珀の輪は作らない） */
+.tg-spot .tg-spot__frame::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  mix-blend-mode: multiply;
+  background: radial-gradient(closest-side at 50% 47%,
+    color-mix(in srgb, var(--amber-hi) 6%, var(--text)) 0%,
+    color-mix(in srgb, var(--amber-hi) 14%, var(--text)) 36%,
+    color-mix(in srgb, var(--amber) 34%, var(--text-dim)) 58%,
+    color-mix(in srgb, var(--amber-lo) 52%, var(--panel-2)) 76%,
+    var(--bg) 94%);
+}
+/* ペンダントライトの光だまり（main.js が .lamp-glow を足す）。料理が白っぽくならない強さに */
+.tg-spot .tg-spot__frame .lamp-glow {
+  background: radial-gradient(ellipse 34% 30% at var(--lx) var(--ly),
+    color-mix(in srgb, var(--amber-hi) 22%, transparent) 0%,
+    color-mix(in srgb, var(--amber-hi) 8%, transparent) 55%,
+    transparent 100%);
+}
+.tg-spot .lightup.is-lit { animation-delay: var(--tg-d, 0s); animation-fill-mode: both; }
+.tg-spot .lightup.is-lit .lamp-glow { animation-delay: calc(2.6s + var(--tg-d, 0s)); }
+
+/* ---- ペンダントのコード：上から降りてくる、細い金の一本線 ---- */
+.tg-spot .tg-spot__fig::before {
+  content: ""; position: absolute; z-index: 2; left: 50%; top: -52px;
+  width: 1px; height: 72px; pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--amber) 55%, transparent);
+  opacity: 0.75;
+  transform: scaleY(0); transform-origin: 50% 0;
+  transition: transform 1.6s var(--ease-out) var(--tg-d, 0s);
+}
+.tg-spot .tg-spot__fig:has(.is-lit)::before { transform: none; }
+html:not(.js) .tg-spot .tg-spot__fig::before { transform: none; }
+
+/* ---- 写真の下のラベル（光だまりの裾に、少し重ねる） ---- */
+.tg-spot .tg-spot__cap {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin-top: -2%;
+  font-size: 14px; line-height: 1.6; letter-spacing: 0.18em; color: var(--text-dim);
+}
+.tg-spot .tg-spot__cap [lang="en"] { font-family: var(--ff-en); font-style: italic; font-size: 17px; letter-spacing: 0.04em; }
+.tg-spot .tg-spot__no {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--ff-en); font-style: italic; font-size: 19px; line-height: 1; letter-spacing: 0.04em;
+  color: var(--amber-hi); white-space: nowrap;
+}
+.tg-spot .tg-spot__no::after { content: ""; width: 26px; height: 1px; background: var(--amber); opacity: 0.8; }
+
+.tg-spot .tg-spot__note {
+  grid-area: note; margin: 0; justify-self: end;
+  font-size: 13px; letter-spacing: 0.1em; color: var(--text-faint);
+}
+.tg-spot .tg-spot__note [lang="en"] { font-family: var(--ff-en); font-style: italic; font-size: 16px; letter-spacing: 0.02em; }
+
+@keyframes tg-spot-pan {
+  from { transform: translateX(calc((100cqw - 100%) * 0.1)); }
+  to { transform: translateX(calc((100cqw - 100%) * 0.9)); }
+}
+@keyframes tg-spot-drift {
+  from { transform: scale(1.01); }
+  to { transform: scale(1.06) translate(-1%, -0.6%); }
+}
+
+/* ---- タブレット：大きい一枚＋縦書き、下に二枚（01→02→03 とジグザグに読める） ---- */
+@media (min-width: 720px) {
+  .tg-spot .tg-spot__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 28px);
+    row-gap: 0;
+    grid-template-areas:
+      "lead lead lead lead lead lead lead lead head head head head"
+      "low  low  low  low  low  low  .    side side side side side"
+      ".    .    .    .    .    .    .    note note note note note";
+  }
+  .tg-spot .tg-spot__head { grid-template-columns: minmax(0, 1fr); justify-items: end; align-self: start; row-gap: 20px; }
+  .tg-spot .tg-spot__fig--side, .tg-spot .tg-spot__fig--low { width: auto; justify-self: stretch; }
+  .tg-spot .tg-spot__fig--side { margin-top: 40px; }
+  .tg-spot .tg-spot__fig--low { margin-top: 128px; }
+  .tg-spot .tg-spot__note { margin-top: 28px; }
+  .tg-spot:lang(en) .tg-spot__head { justify-items: start; align-self: end; padding-bottom: 12%; }
+  .tg-spot .tg-spot__title [lang="en"] { font-size: clamp(28px, 1.4vw + 19px, 42px); }
+  /* 並んで見える画面では、三つの灯りを順番に（01 → 02 → 03） */
+  .tg-spot .tg-spot__fig--side { --tg-d: 0.5s; }
+  .tg-spot .tg-spot__fig--low { --tg-d: 1s; }
+}
+
+/* ---- PC：左に大きく一枚、右に縦書きと小さな一枚、その左下にもう一枚 ---- */
+@media (min-width: 1024px) {
+  .tg-spot .tg-spot__grid {
+    grid-template-areas:
+      "lead lead lead lead lead lead lead .    head head head head"
+      "lead lead lead lead lead lead lead .    side side side side"
+      ".    .    .    low  low  low  low  low  side side side side"
+      ".    .    .    low  low  low  low  low  note note note note";
+  }
+  .tg-spot .tg-spot__fig--side { margin-top: 40px; }
+  .tg-spot .tg-spot__fig--low { margin-top: 32px; }
+  .tg-spot .tg-spot__note { align-self: end; margin-top: 0; }
+  /* English は見出しが横組みで短いぶん、二皿目を下げて斜めの流れ（01→02→03）を保つ */
+  .tg-spot:lang(en) .tg-spot__fig--side { margin-top: 152px; }
+}
+
+/* 動きを減らす設定では、写真は止めて、灯りはついた状態で */
+@media (prefers-reduced-motion: reduce) {
+  .tg-spot .tg-spot__img { animation: none; transform: scale(1.02); }
+  .tg-spot .tg-spot__fig--lead .tg-spot__img { animation: none; transform: translateX(calc((100cqw - 100%) * 0.5)); }
+  .tg-spot .lightup .lamp-glow { animation: none; }
+  .tg-spot .tg-spot__fig::before { transform: none; transition: none; }
+}
+
+/* ===== 案C: slide ===== */
+/* ---------- 木曜日の一皿：シネマ風スライド（tg-slide） ----------
+   一枚の額（スクリーン）の中で、三枚の写真が約6秒ごとにゆっくり重なって入れ替わり、
+   わずかに寄る／引く。白い背景の写真は、二つの層でお店の灯りになじませる。
+   ① 写真の下に「灯りの色」（生成り → 淡い琥珀）を敷き、写真を乗算で重ねる
+      → 白い背景だけが灯りの色に変わり、料理の色はほとんど変わらない
+   ② 写真の上に、ふちだけを暗くする影（色は足さない、ただの暗がり）
+      → 料理は濁らず、外側だけが静かに闇へ沈む
+   下に小さな三枚の目次。動きを減らす設定では一枚目と目次だけ。 */
+
+.tg-slide .tg-slide__wrap { max-width: 680px; margin: 0 auto; }
+
+/* ---- 見出し（トップの「ご案内」と同じ組み方） ---- */
+.tg-slide .tg-slide__head {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 20px;
+  margin-bottom: clamp(26px, 4.2vw, 46px);
+  padding-bottom: clamp(16px, 2.2vw, 24px);
+  border-bottom: 1px solid var(--line);
+}
+.tg-slide .tg-slide__head .eyebrow { grid-column: 1 / -1; justify-self: start; margin-bottom: 10px; }
+.tg-slide .tg-slide__heading {
+  margin: 0; font-weight: 500; color: var(--text);
+  font-size: clamp(22px, 2.6vw, 32px); line-height: 1.6; letter-spacing: 0.14em;
+}
+.tg-slide .tg-slide__heading [lang="en"] {
+  display: block; font-family: var(--ff-en); font-weight: 400;
+  font-size: clamp(30px, 3.8vw, 44px); line-height: 1.1; letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.tg-slide .tg-slide__heading em { font-style: italic; color: var(--amber-hi); }
+.tg-slide .tg-slide__count {
+  padding-bottom: 0.45em;
+  font-family: var(--ff-en); font-style: italic; font-size: 17px; line-height: 1; letter-spacing: 0.08em;
+  color: var(--text-faint); white-space: nowrap;
+}
+
+.tg-slide .tg-slide__figure { margin: 0; }
+
+/* ---- スクリーン ---- */
+.tg-slide .tg-slide__stage {
+  position: relative; overflow: hidden; isolation: isolate;
+  aspect-ratio: 4 / 3;
+  background: var(--bg);
+  box-shadow: 0 0 0 1px var(--line-soft), 0 44px 80px -46px var(--bg);
+}
+/* 細い金の内枠 */
+.tg-slide .tg-slide__stage::after {
+  content: ""; position: absolute; inset: 8px; z-index: 5; pointer-events: none;
+  border: 1px solid var(--line);
+}
+
+/* ① 灯りの色：中央は生成り、外へ向かって淡い琥珀へ（暗くはしない）。
+      写真を乗算で重ねると、白い背景がこの色そのものになり、四角い縁が消える */
+.tg-slide .tg-slide__shot,
+.tg-slide .tg-slide__thumb-frame {
+  background: radial-gradient(ellipse var(--lrx, 80%) var(--lry, 90%) at var(--cx, 50%) var(--cy, 48%),
+    var(--text) 0%,
+    var(--text) 26%,
+    color-mix(in srgb, var(--amber-hi) 55%, var(--text)) 50%,
+    color-mix(in srgb, var(--amber) 80%, var(--amber-hi)) 76%,
+    var(--amber) 100%);
+}
+/* ② ふちの暗がり：色を足さずに暗くするだけなので、野菜の緑やお肉の赤が茶色く濁らない */
+.tg-slide .tg-slide__shot::after,
+.tg-slide .tg-slide__thumb-frame::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse var(--vrx, 70%) var(--vry, 78%) at var(--cx, 50%) var(--cy, 48%),
+    transparent 0%,
+    transparent var(--v0, 40%),
+    color-mix(in srgb, var(--bg) 36%, transparent) 62%,
+    color-mix(in srgb, var(--bg) 72%, transparent) 82%,
+    color-mix(in srgb, var(--bg) 92%, transparent) 100%);
+}
+
+.tg-slide .tg-slide__shot {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden; isolation: isolate;
+  display: grid; place-items: center;
+  opacity: 0;
+}
+.tg-slide .tg-slide__shot--1 { opacity: 1; }
+.tg-slide .tg-slide__img {
+  grid-area: 1 / 1;
+  mix-blend-mode: multiply;
+  /* 灯りが点く演出（--lit）を引き継ぎつつ、料理はほんの少し明るく、色は少しだけ濃く */
+  filter: brightness(calc((0.14 + 0.86 * var(--lit, 1)) * 1.06)) saturate(calc((0.35 + 0.65 * var(--lit, 1)) * 1.08));
+  transform: translate(var(--kb-x0, 0), var(--kb-y0, 0)) scale(var(--kb-s0, 1));
+  will-change: transform;
+}
+
+/* 一枚目（小さな写真 480px）：引き伸ばさず、額の中央に器だけを浮かべる。
+   動きで 1.06 倍に寄っても 480px を超えないよう、最大 440px。ふちは細くぼかして灯りの色に溶かす */
+.tg-slide .tg-slide__shot--1 .tg-slide__img {
+  width: 74%; height: auto;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent, var(--bg) 8%, var(--bg) 92%, transparent),
+    linear-gradient(180deg, transparent, var(--bg) 5%, var(--bg) 95%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent, var(--bg) 8%, var(--bg) 92%, transparent),
+    linear-gradient(180deg, transparent, var(--bg) 5%, var(--bg) 95%, transparent);
+  mask-composite: intersect;
+}
+/* 一枚目は器のまわりに小さな灯りだまりを作る（写真が小さいぶん、外側を深く落とす） */
+.tg-slide .tg-slide__shot--1 {
+  --cy: 48%; --lrx: 46%; --lry: 58%; --vrx: 56%; --vry: 68%; --v0: 44%;
+  --kb-s0: 1; --kb-s1: 1.06; --kb-y1: -1%;
+}
+/* 二枚目・三枚目：額いっぱいに */
+.tg-slide .tg-slide__shot--2 .tg-slide__img,
+.tg-slide .tg-slide__shot--3 .tg-slide__img {
+  position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover;
+}
+.tg-slide .tg-slide__shot--2 { --cy: 46%; --kb-s0: 1.03; --kb-s1: 1.1; --kb-x1: -2.5%; --kb-y1: -1%; }
+.tg-slide .tg-slide__shot--3 { --kb-s0: 1.1; --kb-s1: 1.03; --kb-x0: 2.5%; }
+
+/* 場面ごとの番号（写真といっしょに入れ替わる） */
+.tg-slide .tg-slide__no {
+  position: absolute; z-index: 2; left: 18px; bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--ff-en); font-style: italic; font-weight: 400;
+  font-size: 18px; line-height: 1; letter-spacing: 0.04em; color: var(--text);
+  text-shadow: 0 1px 10px var(--bg);
+}
+.tg-slide .tg-slide__no::after { content: ""; width: 22px; height: 1px; background: var(--amber); }
+
+/* 額の右上：金の縦書き（英語は横組みで左上） */
+.tg-slide .tg-slide__mark {
+  position: absolute; inset: 0; z-index: 4; margin: 0; pointer-events: none;
+  color: var(--amber-hi);
+}
+/* 文字の下だけ、右上の角を薄く暗くする（レモンや白いお皿の上でも金の文字が読めるように） */
+.tg-slide .tg-slide__mark::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(235deg,
+    color-mix(in srgb, var(--bg) 58%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 20%, transparent) 20%,
+    transparent 36%);
+}
+.tg-slide .tg-slide__mark [lang="ja"] {
+  position: absolute; top: 20px; right: 16px;
+  writing-mode: vertical-rl; font-feature-settings: normal; white-space: nowrap;
+  font-size: 15px; font-weight: 500; line-height: 1.5; letter-spacing: 0.22em;
+  text-shadow: 0 0 2px var(--bg), 0 0 16px var(--bg);
+}
+/* English：横組みのまま二行にまとめ、レモンや白い大根おろしと重ならない左上へ（影も左上に） */
+.tg-slide .tg-slide__mark [lang="en"] {
+  position: absolute; top: 18px; left: 18px; max-width: 6em;
+  font-family: var(--ff-en); font-style: italic; font-size: 16px; line-height: 1.1; letter-spacing: 0.02em;
+  text-shadow: 0 0 2px var(--bg), 0 1px 14px var(--bg);
+}
+.tg-slide:lang(en) .tg-slide__mark::before {
+  background: linear-gradient(125deg,
+    color-mix(in srgb, var(--bg) 58%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 20%, transparent) 20%,
+    transparent 36%);
+}
+
+/* 内枠の下の辺を、金の線がゆっくり満たす（一皿ぶんの時間） */
+.tg-slide .tg-slide__time {
+  position: absolute; z-index: 6; left: 8px; right: 8px; bottom: 8px; height: 1px;
+  background: var(--amber); transform-origin: left center; transform: scaleX(0); opacity: 0;
+}
+
+/* ---- 目次（小さな三枚） ---- */
+.tg-slide .tg-slide__strip {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 1.8vw, 14px);
+  margin: clamp(12px, 1.8vw, 16px) 0 0; padding: 0; list-style: none;
+}
+.tg-slide .tg-slide__thumb { min-width: 0; }
+.tg-slide .tg-slide__thumb-frame {
+  position: relative; display: block; overflow: hidden; isolation: isolate;
+  aspect-ratio: 3 / 2;
+  box-shadow: 0 0 0 1px var(--line-soft);
+  --vrx: 74%; --vry: 84%; --v0: 46%;
+}
+.tg-slide .tg-slide__thumb--1 .tg-slide__thumb-frame { --lrx: 56%; --lry: 66%; --vrx: 64%; --vry: 76%; --v0: 44%; }
+.tg-slide .tg-slide__thumb-frame img {
+  width: 100%; height: 100%; object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: brightness(1.06) saturate(1.08);
+}
+/* いま映っている一枚：下に金の線、番号も金色に。ほかの二枚は少しだけ暗く */
+.tg-slide .tg-slide__thumb-frame::before {
+  content: ""; position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 2px;
+  background: var(--amber); opacity: 0;
+}
+.tg-slide .tg-slide__thumb--1 .tg-slide__thumb-frame::before { opacity: 1; }
+.tg-slide .tg-slide__thumb-no {
+  display: block; margin-top: 8px;
+  font-family: var(--ff-en); font-style: italic; font-size: 15px; line-height: 1; letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+.tg-slide .tg-slide__thumb--1 .tg-slide__thumb-no { color: var(--amber); }
+
+.tg-slide .tg-slide__note {
+  margin-top: clamp(18px, 2.4vw, 26px);
+  font-size: 13px; line-height: 1.8; letter-spacing: 0.06em; color: var(--text-faint);
+}
+.tg-slide .tg-slide__note [lang="en"] { display: block; font-size: 15px; line-height: 1.5; letter-spacing: 0.02em; }
+
+/* ---- 少し広い画面：横長の額に ---- */
+@media (min-width: 560px) {
+  .tg-slide .tg-slide__stage { aspect-ratio: 3 / 2; }
+  .tg-slide .tg-slide__shot--1 .tg-slide__img { width: min(78%, 440px); }
+  .tg-slide .tg-slide__stage::after { inset: 10px; }
+  .tg-slide .tg-slide__time { left: 10px; right: 10px; bottom: 10px; }
+  .tg-slide .tg-slide__no { left: 24px; bottom: 24px; font-size: 21px; }
+  .tg-slide .tg-slide__no::after { width: 28px; }
+  .tg-slide .tg-slide__mark [lang="ja"] { top: 26px; right: 22px; font-size: 20px; }
+  .tg-slide .tg-slide__mark [lang="en"] { top: 24px; left: 26px; font-size: 21px; }
+}
+@media (min-width: 1024px) {
+  .tg-slide .tg-slide__count { font-size: 19px; }
+  .tg-slide .tg-slide__mark [lang="ja"] { font-size: 22px; }
+}
+
+/* ---- 動き：約6秒ごとにゆっくり重なって入れ替わり、写真はわずかに寄る／引く ----
+   一周 18 秒。各場面は 1.5 秒で現れ、5 秒とどまり、次と重なりながら 1.5 秒で消える */
+@media (prefers-reduced-motion: no-preference) {
+  .tg-slide .tg-slide__shot--1, .tg-slide .tg-slide__thumb--1 { --n: 0; }
+  .tg-slide .tg-slide__shot--2, .tg-slide .tg-slide__thumb--2 { --n: 1; }
+  .tg-slide .tg-slide__shot--3, .tg-slide .tg-slide__thumb--3 { --n: 2; }
+
+  .tg-slide .tg-slide__shot,
+  .tg-slide .tg-slide__thumb-frame::before {
+    animation: tg-slide-show 18s var(--ease) infinite backwards;
+    animation-delay: calc(var(--n) * 6s - 1.5s);
+  }
+  .tg-slide .tg-slide__img {
+    animation: tg-slide-drift 18s linear infinite backwards;
+    animation-delay: calc(var(--n) * 6s - 1.5s);
+  }
+  .tg-slide .tg-slide__thumb-frame img {
+    animation: tg-slide-dim 18s var(--ease) infinite backwards;
+    animation-delay: calc(var(--n) * 6s - 1.5s);
+  }
+  .tg-slide .tg-slide__thumb-no {
+    animation: tg-slide-num 18s var(--ease) infinite backwards;
+    animation-delay: calc(var(--n) * 6s - 1.5s);
+  }
+  .tg-slide .tg-slide__time {
+    animation: tg-slide-time 6s linear -0.75s infinite;
+  }
+
+  /* 画面に入る（.is-in が付く）までは一枚目のまま待ち、灯りが点くのと同時に始まる。
+     main.js が動かないときは、この待機をしない（html.js が外れるため） */
+  html.js .tg-slide .tg-slide__figure:not(.is-in) :is(.tg-slide__shot, .tg-slide__img, .tg-slide__time, .tg-slide__thumb-no),
+  html.js .tg-slide .tg-slide__figure:not(.is-in) .tg-slide__thumb-frame img,
+  html.js .tg-slide .tg-slide__figure:not(.is-in) .tg-slide__thumb-frame::before { animation-play-state: paused; }
+
+  /* マウスを乗せている間は止まる（目次とスクリーンを同時に止めて、ずれないように） */
+  @media (hover: hover) {
+    .tg-slide .tg-slide__figure:hover .tg-slide__shot,
+    .tg-slide .tg-slide__figure:hover .tg-slide__img,
+    .tg-slide .tg-slide__figure:hover .tg-slide__time,
+    .tg-slide .tg-slide__figure:hover .tg-slide__thumb-frame::before,
+    .tg-slide .tg-slide__figure:hover .tg-slide__thumb-frame img,
+    .tg-slide .tg-slide__figure:hover .tg-slide__thumb-no { animation-play-state: paused; }
+  }
+}
+@keyframes tg-slide-show {
+  0% { opacity: 0; }
+  8.333% { opacity: 1; }
+  36.111% { opacity: 1; }
+  44.444% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes tg-slide-dim {
+  0% { filter: brightness(0.68) saturate(1); }
+  8.333% { filter: brightness(1.06) saturate(1.08); }
+  36.111% { filter: brightness(1.06) saturate(1.08); }
+  44.444% { filter: brightness(0.68) saturate(1); }
+  100% { filter: brightness(0.68) saturate(1); }
+}
+@keyframes tg-slide-num {
+  0% { color: var(--text-faint); }
+  8.333% { color: var(--amber); }
+  36.111% { color: var(--amber); }
+  44.444% { color: var(--text-faint); }
+  100% { color: var(--text-faint); }
+}
+@keyframes tg-slide-drift {
+  0% { transform: translate(var(--kb-x0, 0), var(--kb-y0, 0)) scale(var(--kb-s0, 1)); }
+  44.444%, 100% { transform: translate(var(--kb-x1, 0), var(--kb-y1, 0)) scale(var(--kb-s1, 1)); }
+}
+@keyframes tg-slide-time {
+  0% { transform: scaleX(0); opacity: 0.85; }
+  88% { transform: scaleX(1); opacity: 0.85; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* 動きを減らす設定：一枚目だけを静かに表示し、目次は三枚とも明るく（一枚目に金の線） */
+@media (prefers-reduced-motion: reduce) {
+  .tg-slide .tg-slide__shot, .tg-slide .tg-slide__img,
+  .tg-slide .tg-slide__time, .tg-slide .tg-slide__thumb-frame::before,
+  .tg-slide .tg-slide__thumb-frame img, .tg-slide .tg-slide__thumb-no { animation: none; }
+  .tg-slide .tg-slide__shot { opacity: 0; }
+  .tg-slide .tg-slide__shot--1 { opacity: 1; }
+  .tg-slide .tg-slide__img { transform: none; will-change: auto; }
+  .tg-slide .tg-slide__time { display: none; }
+}
+
+/* ===== 案D: tategaki ===== */
+/* ---------- 木曜ごはん：縦書きパネル（tg-tategaki） ----------
+   トップページ「ご案内」の細長いフォトパネルと同じ作法で、料理写真を三枚。
+   白い背景の料理写真は、上から灯りを当てたように：
+   中央はクリーム色（--text）で乗算して料理の色をそのまま残し、
+   外側へいくほど琥珀色の影を経て、店の暗さ（--bg）へ溶かす。
+   小さなカレー写真（480×360）を引き伸ばさないよう、パネルの高さは 360px まで
+   （＝カレー写真の原寸の高さ。横幅も 480px を超えない）。 */
+
+.tg-tategaki {
+  --tg-shade: color-mix(in srgb, var(--bg) 80%, var(--amber-lo));
+}
+
+/* ---- 見出し（スマートフォン・タブレット：上に横組み） ---- */
+.tg-tategaki .tg-tategaki__head {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 20px;
+  margin-bottom: clamp(36px, 5.5vw, 64px);
+  padding-bottom: clamp(18px, 2.4vw, 26px);
+  border-bottom: 1px solid var(--line);
+}
+.tg-tategaki .tg-tategaki__eyebrow { grid-column: 1 / -1; justify-self: start; margin-bottom: 12px; }
+.tg-tategaki .tg-tategaki__heading { grid-column: 1; margin: 0; font-weight: 500; color: var(--text); }
+.tg-tategaki .tg-tategaki__count {
+  grid-column: 2; grid-row: 2; padding-bottom: 0.45em;
+  font-family: var(--ff-en); font-style: italic; font-size: 17px; line-height: 1; letter-spacing: 0.08em;
+  color: var(--text-faint); white-space: nowrap;
+}
+.tg-tategaki .tg-tategaki__lead { grid-column: 1 / -1; margin: 14px 0 0; color: var(--text-dim); }
+
+.tg-tategaki:not(:lang(en)) .tg-tategaki__heading { font-size: clamp(22px, 2.4vw + 10px, 34px); line-height: 1.6; letter-spacing: 0.14em; }
+.tg-tategaki:not(:lang(en)) .tg-tategaki__lead { font-size: 14px; line-height: 1.9; letter-spacing: 0.06em; }
+.tg-tategaki:lang(en) .tg-tategaki__heading {
+  font-family: var(--ff-en); font-weight: 400;
+  font-size: clamp(30px, 3vw + 16px, 50px); line-height: 1.1; letter-spacing: 0.01em; text-wrap: balance;
+}
+.tg-tategaki:lang(en) .tg-tategaki__heading em { font-style: italic; color: var(--amber-hi); }
+.tg-tategaki:lang(en) .tg-tategaki__lead { font-size: 17px; line-height: 1.5; text-wrap: pretty; }
+
+/* ---- パネルの並び（スマートフォン：一枚ずつ、写真と見出しを左右交互に） ---- */
+.tg-tategaki .tg-tategaki__list {
+  margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 44px;
+}
+.tg-tategaki .tg-tategaki__item { min-width: 0; }
+.tg-tategaki .tg-tategaki__stage {
+  display: grid; column-gap: 16px; align-items: start;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  grid-template-areas: "frame title" "frame cap";
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.tg-tategaki .tg-tategaki__item:nth-child(even) .tg-tategaki__stage {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  grid-template-areas: "title frame" "cap frame";
+}
+.tg-tategaki .tg-tategaki__shot { display: contents; }
+.tg-tategaki .tg-tategaki__frame { grid-area: frame; }
+.tg-tategaki .tg-tategaki__title { grid-area: title; margin: 0; color: var(--amber-hi); }
+.tg-tategaki .tg-tategaki__cap { grid-area: cap; align-self: end; }
+
+/* 大きめのスマートフォン：写真が横に広がりすぎないように */
+@media (min-width: 480px) and (max-width: 559.98px) {
+  .tg-tategaki .tg-tategaki__stage { grid-template-columns: minmax(0, 250px) minmax(0, 1fr); }
+  .tg-tategaki .tg-tategaki__item:nth-child(even) .tg-tategaki__stage { grid-template-columns: minmax(0, 1fr) minmax(0, 250px); }
+}
+
+/* ---- 写真パネル ---- */
+.tg-tategaki .tg-tategaki__frame {
+  position: relative; overflow: hidden; isolation: isolate;
+  width: 100%; aspect-ratio: 9 / 16; max-height: 360px;
+  background: var(--bg);
+  container-type: inline-size;
+}
+.tg-tategaki .tg-tategaki__light { position: absolute; inset: 0; z-index: 0; overflow: hidden; isolation: isolate; }
+/* 料理写真：ゆっくり横に流れる（--pan-from → --pan-to は、はみ出し幅に対する割合） */
+.tg-tategaki .tg-tategaki__img {
+  position: absolute; top: 0; left: 0; z-index: 0;
+  width: auto; height: 100%; max-width: none;
+  transform: translateX(calc((100cqw - 100%) * var(--pan-from, 0)));
+  filter: brightness(calc(0.16 + 0.84 * var(--lit, 1))) saturate(calc(0.4 + 0.7 * var(--lit, 1))) contrast(1.04);
+  animation: tg-tategaki-pan var(--pan-dur, 28s) ease-in-out var(--pan-delay, 0s) infinite alternate;
+  will-change: transform;
+}
+@keyframes tg-tategaki-pan {
+  from { transform: translateX(calc((100cqw - 100%) * var(--pan-from, 0))); }
+  to { transform: translateX(calc((100cqw - 100%) * var(--pan-to, 1))); }
+}
+/* 写真ごとの流れる範囲（カレー／牛肉の皿／焼き魚）。
+   二枚目は牛肉の皿だけを追う：少しだけ大きく切り取り（原寸 508px より小さいまま）、
+   左の小鉢のキッチンペーパー（白い三角）が枠に入らない範囲で流す */
+.tg-tategaki .tg-tategaki__item--1 { --pan-from: 0.1; --pan-to: 0.84; --pan-rest: 0.5; --pan-dur: 28s; --pan-delay: -6s; }
+.tg-tategaki .tg-tategaki__item--2 { --pan-from: 1; --pan-to: 0.8; --pan-rest: 0.9; --pan-dur: 24s; --pan-delay: -12s; }
+.tg-tategaki .tg-tategaki__item--2 .tg-tategaki__img { top: -8%; height: 116%; }
+.tg-tategaki .tg-tategaki__item--3 { --pan-from: 0.06; --pan-to: 0.7; --pan-rest: 0.36; --pan-dur: 26s; --pan-delay: -3s; }
+
+/* 灯りの落ち方：乗算で、白い背景はクリーム色 → 琥珀の影 → 店の暗さへ */
+.tg-tategaki .tg-tategaki__light::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  mix-blend-mode: multiply;
+  background: radial-gradient(ellipse 104% 58% at var(--tg-cx, 50%) var(--tg-cy, 54%),
+    var(--text) 0%, var(--text) 42%,
+    color-mix(in srgb, var(--amber-lo) 52%, var(--bg)) 78%,
+    var(--bg) 100%);
+}
+/* 灯ったあとの、ほのかな揺らぎ（上からの暖かい光） */
+.tg-tategaki .tg-tategaki__light .lamp-glow {
+  background: radial-gradient(ellipse 90% 46% at 50% 0%, color-mix(in srgb, var(--amber-hi) 55%, transparent) 0%, transparent 100%);
+  mix-blend-mode: soft-light;
+}
+
+/* 番号の角だけを落とす暗がり（文字の側の暗がりは、タブレット以上で下に指定） */
+.tg-tategaki .tg-tategaki__frame::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(0deg, color-mix(in srgb, var(--tg-shade) 72%, transparent) 0%, transparent 22%);
+}
+.tg-tategaki .tg-tategaki__item:nth-child(even) .tg-tategaki__frame::after,
+.tg-tategaki:lang(en) .tg-tategaki__frame::after {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tg-shade) 72%, transparent) 0%, transparent 22%);
+}
+/* 細い縁 */
+.tg-tategaki .tg-tategaki__frame::before {
+  content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--line-soft);
+}
+
+/* 写真の上の番号 */
+.tg-tategaki .tg-tategaki__no {
+  position: absolute; z-index: 3; left: 14px; bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--ff-en); font-style: italic; font-weight: 400;
+  font-size: 22px; line-height: 1; letter-spacing: 0.04em; color: var(--text);
+  text-shadow: 0 1px 10px var(--bg);
+}
+.tg-tategaki .tg-tategaki__no::after { content: ""; width: 18px; height: 1px; background: var(--amber); }
+.tg-tategaki .tg-tategaki__item:nth-child(even) .tg-tategaki__no,
+.tg-tategaki:lang(en) .tg-tategaki__no { bottom: auto; top: 16px; }
+
+/* 写真の下（スマートフォンでは横）の小さな札 */
+.tg-tategaki .tg-tategaki__cap {
+  position: relative; margin: 0; padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+  color: var(--amber); line-height: 1.4;
+}
+.tg-tategaki .tg-tategaki__cap::before {
+  content: ""; position: absolute; left: 0; top: -1px; width: 28px; height: 1px; background: var(--amber);
+}
+.tg-tategaki:not(:lang(en)) .tg-tategaki__cap { font-size: 13px; letter-spacing: 0.24em; }
+.tg-tategaki:lang(en) .tg-tategaki__cap {
+  font-family: var(--ff-en); font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+}
+
+/* ===== 日本語：金の縦書き ===== */
+.tg-tategaki:not(:lang(en)) .tg-tategaki__title {
+  writing-mode: vertical-rl; font-feature-settings: normal; line-break: strict;
+  font-weight: 500; font-size: clamp(19px, 1.6vw + 14px, 24px); line-height: 1.6; letter-spacing: 0.16em;
+  justify-self: center;
+}
+.tg-tategaki:not(:lang(en)) .tg-tategaki__title > [lang] { display: block; }
+.tg-tategaki .tg-tategaki__col { display: block; white-space: nowrap; }
+/* 奇数枚：右上から書き出し、二行目を少し下げる（天付き） */
+.tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(odd) .tg-tategaki__col + .tg-tategaki__col { padding-top: 1.5em; }
+/* 偶数枚：下にそろえ、一行目を少し上げる（地付き） */
+.tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(even) .tg-tategaki__title { text-align: end; }
+.tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(even) .tg-tategaki__col:first-child { padding-bottom: 1.5em; }
+
+/* ===== English：横組み ===== */
+.tg-tategaki:lang(en) .tg-tategaki__title {
+  font-family: var(--ff-en); font-weight: 500;
+  font-size: clamp(20px, 1.4vw + 15px, 24px); line-height: 1.1; letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.tg-tategaki:lang(en) .tg-tategaki__title em { display: block; font-style: italic; font-weight: 400; color: var(--text); }
+
+/* ---- タブレット以上：細長い三枚を横一列に、見出しは写真の上に重ねる ---- */
+@media (min-width: 560px) {
+  /* 一枚の幅は 260px まで：広い画面でも「細長いパネル」のまま、余白で間をとる */
+  .tg-tategaki .tg-tategaki__list {
+    grid-template-columns: repeat(3, minmax(0, 260px)); justify-content: space-between;
+    column-gap: clamp(14px, 2.2vw, 28px); align-items: start;
+  }
+  .tg-tategaki .tg-tategaki__item:nth-child(even) { margin-top: clamp(36px, 6vw, 72px); }
+  .tg-tategaki .tg-tategaki__stage,
+  .tg-tategaki .tg-tategaki__item:nth-child(even) .tg-tategaki__stage { display: block; }
+  .tg-tategaki .tg-tategaki__shot { display: block; position: relative; }
+  .tg-tategaki .tg-tategaki__cap { margin-top: 14px; }
+  .tg-tategaki .tg-tategaki__title { position: absolute; z-index: 3; }
+
+  /* 日本語：奇数枚は右上から、偶数枚は右下にそろえる */
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__title {
+    top: 18px; right: 12px; font-size: clamp(17px, 0.9vw + 11px, 22px);
+    text-shadow: 0 0 2px var(--bg), 0 0 10px var(--bg), 0 0 22px var(--bg);
+  }
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(even) .tg-tategaki__title { top: auto; bottom: 18px; }
+  /* 文字の側だけを、角から楕円に落とす（料理の側は明るいまま） */
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(odd) .tg-tategaki__frame::after {
+    background:
+      radial-gradient(ellipse 82% 66% at 100% 0%,
+        color-mix(in srgb, var(--tg-shade) 92%, transparent) 0%,
+        color-mix(in srgb, var(--tg-shade) 74%, transparent) 36%,
+        color-mix(in srgb, var(--tg-shade) 34%, transparent) 66%,
+        transparent 100%),
+      linear-gradient(0deg, color-mix(in srgb, var(--tg-shade) 72%, transparent) 0%, transparent 22%);
+  }
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(even) .tg-tategaki__frame::after {
+    background:
+      radial-gradient(ellipse 82% 66% at 100% 100%,
+        color-mix(in srgb, var(--tg-shade) 92%, transparent) 0%,
+        color-mix(in srgb, var(--tg-shade) 74%, transparent) 36%,
+        color-mix(in srgb, var(--tg-shade) 34%, transparent) 66%,
+        transparent 100%),
+      linear-gradient(180deg, color-mix(in srgb, var(--tg-shade) 72%, transparent) 0%, transparent 22%);
+  }
+  /* 灯りの中心は、文字と反対側へ */
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(odd) .tg-tategaki__light { --tg-cx: 36%; --tg-cy: 62%; }
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(even) .tg-tategaki__light { --tg-cx: 36%; --tg-cy: 40%; }
+
+  /* English：見出しは写真の下部に */
+  .tg-tategaki:lang(en) .tg-tategaki__title {
+    left: 14px; right: 12px; bottom: 16px;
+    font-size: clamp(17px, 1.2vw + 10px, 25px);
+    text-shadow: 0 1px 14px var(--bg);
+  }
+  .tg-tategaki:lang(en) .tg-tategaki__frame::after,
+  .tg-tategaki:lang(en) .tg-tategaki__item:nth-child(even) .tg-tategaki__frame::after {
+    background:
+      linear-gradient(0deg,
+        color-mix(in srgb, var(--tg-shade) 94%, transparent) 0%,
+        color-mix(in srgb, var(--tg-shade) 62%, transparent) 30%,
+        transparent 56%),
+      linear-gradient(180deg, color-mix(in srgb, var(--tg-shade) 66%, transparent) 0%, transparent 22%);
+  }
+  .tg-tategaki:lang(en) .tg-tategaki__light { --tg-cy: 44%; }
+}
+
+/* ---- PC：左に見出し、右に三枚 ---- */
+@media (min-width: 1024px) {
+  .tg-tategaki .tg-tategaki__inner {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.15fr);
+    column-gap: clamp(44px, 5vw, 80px); align-items: center;
+  }
+  .tg-tategaki .tg-tategaki__head {
+    display: block; margin: 0; padding: 0; border: 0;
+  }
+  .tg-tategaki .tg-tategaki__eyebrow { display: inline-block; margin-bottom: 16px; }
+  .tg-tategaki .tg-tategaki__lead {
+    position: relative; margin-top: 26px; padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .tg-tategaki .tg-tategaki__lead::before {
+    content: ""; position: absolute; left: 0; top: -1px; width: 40px; height: 1px; background: var(--amber);
+  }
+  .tg-tategaki .tg-tategaki__count { display: block; margin-top: 30px; padding: 0; font-size: 19px; }
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__heading { font-size: clamp(26px, 1.4vw + 12px, 32px); }
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__lead { font-size: 15px; }
+  .tg-tategaki:lang(en) .tg-tategaki__heading { font-size: clamp(34px, 2.2vw + 12px, 44px); }
+  .tg-tategaki .tg-tategaki__no { left: 16px; }
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__title { top: 22px; right: 14px; }
+  .tg-tategaki:not(:lang(en)) .tg-tategaki__item:nth-child(even) .tg-tategaki__title { top: auto; bottom: 22px; }
+}
+
+/* 動きを減らす設定：流さずに、いちばん見せたい位置で止める（灯りの揺らぎも止める） */
+@media (prefers-reduced-motion: reduce) {
+  .tg-tategaki .tg-tategaki__img {
+    animation: none;
+    transform: translateX(calc((100cqw - 100%) * var(--pan-rest, 0.5)));
+  }
+  .tg-tategaki .tg-tategaki__light.is-lit .lamp-glow { animation: none; }
+}
+</style>
+</head><body>
+<a class="skip-link" href="#main"><span lang="ja">本文へ移動</span><span lang="en">Skip to content</span></a>
+<header class="site-header">
+  <div class="hdr-row">
+    <a class="brand" href="index.html" aria-label="BAR POCHI トップページ" data-en-aria-label="BAR POCHI home">
+      <img src="assets/img/logo.jpg" alt="" width="44" height="44">
+      <span class="brand-name">BAR POCHI</span>
+    </a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー" data-en-aria-label="Main menu">
+      <ul>
+        <li class="nav-home"><a href="index.html"><span lang="ja">トップ</span><span lang="en">Home</span><span class="nav-en" aria-hidden="true">Home</span></a></li><li><a href="concept.html"><span lang="ja">コンセプト</span><span lang="en">Concept</span><span class="nav-en" aria-hidden="true">Concept</span></a></li><li><a href="menu.html"><span lang="ja">メニュー</span><span lang="en">Menu</span><span class="nav-en" aria-hidden="true">Menu</span></a></li><li><a href="thursday.html" aria-current="page"><span lang="ja">木曜ごはん</span><span lang="en">Thursday Meals</span><span class="nav-en" aria-hidden="true">Thursday Meals</span></a></li><li><a href="party.html"><span lang="ja">貸切・パーティー</span><span lang="en">Private Party</span><span class="nav-en" aria-hidden="true">Private Party</span></a></li><li><a href="access.html"><span lang="ja">アクセス</span><span lang="en">Access</span><span class="nav-en" aria-hidden="true">Access</span></a></li>
+      </ul>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="言語 / Language">
+      <button type="button" data-set-lang="ja" aria-pressed="true">JA</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <div class="cta-bar">
+      <details class="insta-pick">
+        <summary class="cta cta-insta" aria-label="Instagram（アカウントを選ぶ）" data-en-aria-label="Instagram (choose an account)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg><span>Instagram</span><svg class="insta-caret" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="insta-menu">
+          <a href="https://www.instagram.com/bar_pochi_sapporo/" target="_blank" rel="noopener"><span class="im-label"><span lang="ja">お店のアカウント</span><span lang="en">Bar account</span></span><span class="im-handle">@bar_pochi_sapporo</span></a>
+          <a href="https://www.instagram.com/__kiichanp__/" target="_blank" rel="noopener"><span class="im-label"><span lang="ja">個人アカウント</span><span lang="en">Personal account</span></span><span class="im-handle">@__kiichanp__</span></a>
+        </div>
+      </details>
+      <a class="cta cta-reserve" href="reserve.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.8h17M8 3v4M16 3v4"/><path d="M8 13.5h2M14 13.5h2M8 16.8h2"/></svg><span lang="ja">ご予約</span><span lang="en">Reserve</span></a>
+    </div>
+    <button type="button" class="nav-toggle" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く" data-en-aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section section--tight">
+    <div class="container--narrow center">
+      <span class="eyebrow">Thursday photos</span>
+      <h1 class="h2">木曜ごはんの写真の見せ方</h1>
+      <p class="lead">いただいた3枚の写真を、お店のホームページの雰囲気に合わせて見せる4案です。それぞれ「木曜ごはん」ページに入れたときの形で並べています。気に入ったものを記号で教えてください。</p>
+      <nav class="pattern-index" aria-label="案の一覧"><a href="#tg-frame"><b>A</b>額装ギャラリー</a><a href="#tg-spot"><b>B</b>灯りの下の一皿（スポットライト）</a><a href="#tg-slide"><b>C</b>灯りのスライド</a><a href="#tg-tategaki"><b>D</b>縦書きパネル</a></nav>
+    </div>
+  </section>
+  <div class="opt-label" id="tg-frame">
+    <div class="container">
+      <span class="opt-letter">A</span>
+      <div><strong>案A：額装ギャラリー</strong><p>暗い壁に三枚の料理写真を額に入れて飾ったような見せ方です。写真は切り取らずにお皿まで全部見せ、明るさもそのまま。額の上の小さな灯りが、スクロールに合わせて一枚ずつ静かに灯ります。</p></div>
+    </div>
+  </div>
+    <section class="section section--panel tg-frame" aria-labelledby="tg-frame-title">
+    <div class="container">
+      <header class="tg-frame__head reveal">
+        <span class="eyebrow tg-frame__eyebrow" aria-hidden="true">Thursday Plates</span>
+        <h2 class="tg-frame__heading" id="tg-frame-title"><span lang="ja"><span class="nw">たとえば、</span><span class="nw">こんな一皿を。</span></span><span lang="en">A Thursday plate, <em>for instance.</em></span></h2>
+        <span class="tg-frame__count" aria-hidden="true">01 — 03</span>
+      </header>
+      <ol class="tg-frame__list">
+        <li class="tg-frame__item reveal" style="--i:1">
+          <figure class="tg-frame__piece lightup" style="--lx:50%;--ly:-6%">
+            <div class="tg-frame__window">
+              <img class="tg-frame__img" src="assets/img/thursday-1.jpg" width="480" height="360" loading="lazy" alt="野菜とチキンのカレーとごはん" data-en-alt="Chicken and vegetable curry with rice">
+            </div>
+            <figcaption class="tg-frame__cap">
+              <span class="tg-frame__no" aria-hidden="true">01</span>
+              <span class="tg-frame__rule" aria-hidden="true"></span>
+              <span class="tg-frame__label"><span lang="ja">一皿目</span><span lang="en">The first plate</span></span>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="tg-frame__item reveal" style="--i:2">
+          <figure class="tg-frame__piece lightup" style="--lx:50%;--ly:-6%">
+            <div class="tg-frame__window">
+              <img class="tg-frame__img" src="assets/img/thursday-2.jpg" width="801" height="508" loading="lazy" alt="ブロッコリーの小鉢と、薄切りのローストビーフ" data-en-alt="A small bowl of broccoli beside sliced roast beef with greens">
+            </div>
+            <figcaption class="tg-frame__cap">
+              <span class="tg-frame__no" aria-hidden="true">02</span>
+              <span class="tg-frame__rule" aria-hidden="true"></span>
+              <span class="tg-frame__label"><span lang="ja">二皿目</span><span lang="en">The second plate</span></span>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="tg-frame__item reveal" style="--i:3">
+          <figure class="tg-frame__piece lightup" style="--lx:50%;--ly:-6%">
+            <div class="tg-frame__window">
+              <img class="tg-frame__img" src="assets/img/thursday-3.jpg" width="800" height="512" loading="lazy" alt="レモンと大根おろし、大葉を添えた白身魚の焼き物" data-en-alt="Grilled white fish with lemon, grated daikon and shiso">
+            </div>
+            <figcaption class="tg-frame__cap">
+              <span class="tg-frame__no" aria-hidden="true">03</span>
+              <span class="tg-frame__rule" aria-hidden="true"></span>
+              <span class="tg-frame__label"><span lang="ja">三皿目</span><span lang="en">The third plate</span></span>
+            </figcaption>
+          </figure>
+        </li>
+      </ol>
+      <p class="tg-frame__note reveal" style="--i:4"><span lang="ja">写真は、お料理の一例です。</span><span lang="en">The photos show examples of our dishes.</span></p>
+    </div>
+  </section><div class="opt-label" id="tg-spot">
+    <div class="container">
+      <span class="opt-letter">B</span>
+      <div><strong>案B：灯りの下の一皿（スポットライト）</strong><p>暗いお店の中で、天井の灯りが一皿ずつを照らしているように見せる案です。写真の白い背景は闇にやわらかく溶けて料理の色だけがあたたかく浮かび、スクロールすると明かりが一つずつともって、金色の縦書き「灯りの下に、木曜日の一皿。」が添えられます。</p></div>
+    </div>
+  </div>
+    <section class="section tg-spot" aria-labelledby="tg-spot-title">
+    <div class="container tg-spot__grid">
+      <header class="tg-spot__head">
+        <span class="eyebrow tg-spot__eyebrow reveal" aria-hidden="true">Every Thursday</span>
+        <h2 class="tg-spot__title reveal" id="tg-spot-title" style="--i:1"><span lang="ja"><span class="tg-spot__col">灯りの下に、</span><span class="tg-spot__col">木曜日の一皿。</span></span><span lang="en">Under the lamp, <em>a Thursday plate.</em></span></h2>
+      </header>
+
+      <figure class="tg-spot__fig tg-spot__fig--lead">
+        <div class="tg-spot__frame lightup" style="--lx:50%;--ly:40%">
+          <img class="tg-spot__img" src="assets/img/thursday-2.jpg" width="801" height="508" loading="lazy" decoding="async" alt="薄く切ったローストビーフと、ブロッコリーの小鉢" data-en-alt="Sliced roast beef with fresh greens, and a small bowl of broccoli">
+        </div>
+        <figcaption class="tg-spot__cap reveal"><span class="tg-spot__no" aria-hidden="true">No. 01</span><span lang="ja">一皿目</span><span lang="en">Plate one</span></figcaption>
+      </figure>
+
+      <figure class="tg-spot__fig tg-spot__fig--side">
+        <div class="tg-spot__frame lightup" style="--lx:48%;--ly:42%">
+          <img class="tg-spot__img" src="assets/img/thursday-1.jpg" width="480" height="360" loading="lazy" decoding="async" alt="野菜とチキンのカレーライス" data-en-alt="Chicken and vegetable curry with rice">
+        </div>
+        <figcaption class="tg-spot__cap reveal"><span class="tg-spot__no" aria-hidden="true">No. 02</span><span lang="ja">二皿目</span><span lang="en">Plate two</span></figcaption>
+      </figure>
+
+      <figure class="tg-spot__fig tg-spot__fig--low">
+        <div class="tg-spot__frame lightup" style="--lx:50%;--ly:46%">
+          <img class="tg-spot__img" src="assets/img/thursday-3.jpg" width="800" height="512" loading="lazy" decoding="async" alt="こんがり焼いた白身魚に、レモンと大根おろし、大葉を添えて" data-en-alt="Grilled white fish with lemon, grated daikon and a shiso leaf">
+        </div>
+        <figcaption class="tg-spot__cap reveal"><span class="tg-spot__no" aria-hidden="true">No. 03</span><span lang="ja">三皿目</span><span lang="en">Plate three</span></figcaption>
+      </figure>
+
+      <p class="tg-spot__note reveal"><span lang="ja">写真はお料理の一例です。</span><span lang="en">The photos show example dishes.</span></p>
+    </div>
+  </section>
+<div class="opt-label" id="tg-slide">
+    <div class="container">
+      <span class="opt-letter">C</span>
+      <div><strong>案C：灯りのスライド</strong><p>一枚の額の中で、三枚のお料理の写真が約6秒ごとにゆっくり重なって入れ替わる映画のようなスライドで、額の下には三枚の小さな写真を目次として並べています。写真の白い背景だけをお店の灯りのような琥珀色に変え、ふちは色を足さずに暗がりへ沈めているので、野菜の緑やお肉の赤はおいしそうな色のまま見えます。</p></div>
+    </div>
+  </div>
+    <section class="section section--panel tg-slide" aria-labelledby="tg-slide-title">
+    <div class="tg-slide__wrap">
+      <header class="tg-slide__head reveal">
+        <span class="eyebrow">Thursday Plates</span>
+        <h2 class="tg-slide__heading" id="tg-slide-title"><span lang="ja"><span class="nw">たとえば、</span><span class="nw">こんな一皿を。</span></span><span lang="en">For instance, <em>plates like these.</em></span></h2>
+        <span class="tg-slide__count" aria-hidden="true">01 — 03</span>
+      </header>
+
+      <figure class="tg-slide__figure reveal" style="--i:1">
+        <div class="tg-slide__stage lightup" style="--lx:50%;--ly:-12%">
+          <div class="tg-slide__shot tg-slide__shot--1">
+            <img class="tg-slide__img" src="assets/img/thursday-1.jpg" width="480" height="360" loading="lazy" decoding="async" alt="野菜とチキンのカレーライス" data-en-alt="Chicken and vegetable curry with rice">
+            <span class="tg-slide__no" aria-hidden="true">No. 01</span>
+          </div>
+          <div class="tg-slide__shot tg-slide__shot--2">
+            <img class="tg-slide__img" src="assets/img/thursday-2.jpg" width="801" height="508" loading="lazy" decoding="async" alt="薄切りのローストビーフと、小鉢のブロッコリー" data-en-alt="Sliced roast beef with greens, and a small bowl of broccoli">
+            <span class="tg-slide__no" aria-hidden="true">No. 02</span>
+          </div>
+          <div class="tg-slide__shot tg-slide__shot--3">
+            <img class="tg-slide__img" src="assets/img/thursday-3.jpg" width="800" height="512" loading="lazy" decoding="async" alt="焼いた白身魚に、レモンと大根おろし、大葉を添えて" data-en-alt="Grilled white fish with lemon, grated daikon and shiso">
+            <span class="tg-slide__no" aria-hidden="true">No. 03</span>
+          </div>
+          <p class="tg-slide__mark" aria-hidden="true"><span lang="ja">木曜日の一皿</span><span lang="en">A Thursday plate</span></p>
+          <span class="tg-slide__time" aria-hidden="true"></span>
+        </div>
+
+        <!-- 目次：上のスクリーンと同じ三枚（読み上げは上の写真で足りるので、ここは飾り扱い） -->
+        <ol class="tg-slide__strip" aria-hidden="true">
+          <li class="tg-slide__thumb tg-slide__thumb--1"><span class="tg-slide__thumb-frame"><img src="assets/img/thursday-1.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""></span><span class="tg-slide__thumb-no">01</span></li>
+          <li class="tg-slide__thumb tg-slide__thumb--2"><span class="tg-slide__thumb-frame"><img src="assets/img/thursday-2.jpg" width="801" height="508" loading="lazy" decoding="async" alt=""></span><span class="tg-slide__thumb-no">02</span></li>
+          <li class="tg-slide__thumb tg-slide__thumb--3"><span class="tg-slide__thumb-frame"><img src="assets/img/thursday-3.jpg" width="800" height="512" loading="lazy" decoding="async" alt=""></span><span class="tg-slide__thumb-no">03</span></li>
+        </ol>
+
+        <figcaption class="tg-slide__note"><span lang="ja"><span class="nw">※写真は、</span><span class="nw">木曜日にお出しする</span><span class="nw">お食事の一例です。</span></span><span lang="en">These photos show examples of our Thursday meals.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+<div class="opt-label" id="tg-tategaki">
+    <div class="container">
+      <span class="opt-letter">D</span>
+      <div><strong>案D：縦書きパネル</strong><p>トップページの「ご案内」と同じ細長い写真パネルに三枚のお料理を並べました。写真はゆっくり横に流れ、金色の縦書きの言葉を添えています。白い背景は、ろうそくの灯りが当たったような温かい色で店の暗さになじませ、お料理の色は美味しそうなまま残しています。カレーの写真は小さいので、引き伸ばさずに元の大きさまでで見せています。</p></div>
+    </div>
+  </div>
+    <section class="section section--panel tg-tategaki" aria-labelledby="tg-tategaki-title">
+    <div class="container tg-tategaki__inner">
+      <header class="tg-tategaki__head reveal">
+        <span class="eyebrow tg-tategaki__eyebrow" aria-hidden="true"><span lang="ja">Thursday Plates</span><span lang="en">Thursday Plates</span></span>
+        <h2 class="tg-tategaki__heading" id="tg-tategaki-title"><span lang="ja"><span class="nw">たとえば、</span><span class="nw">こんなひと皿。</span></span><span lang="en">A few plates <em>from our Thursdays</em></span></h2>
+        <p lang="ja" class="tg-tategaki__lead"><span class="nw">写真は、木曜日に</span><span class="nw">お出ししている</span><span class="nw">お料理の一例です。</span></p><p lang="en" class="tg-tategaki__lead">These photos show a few examples of what we serve on Thursdays.</p>
+        <span class="tg-tategaki__count" aria-hidden="true">01 — 03</span>
+      </header>
+      <ol class="tg-tategaki__list">
+        <li class="tg-tategaki__item tg-tategaki__item--1 reveal" style="--i:1">
+          <div class="tg-tategaki__stage">
+            <div class="tg-tategaki__shot">
+              <div class="tg-tategaki__frame">
+                <div class="tg-tategaki__light lightup" style="--lx:42%;--ly:58%">
+                  <img class="tg-tategaki__img" src="assets/img/thursday-1.jpg" width="480" height="360" loading="lazy" alt="野菜とチキンのカレーと、ごはん" data-en-alt="Curry with vegetables and chicken, served with rice">
+                </div>
+                <span class="tg-tategaki__no" aria-hidden="true">01</span>
+              </div>
+              <h3 class="tg-tategaki__title"><span lang="ja"><span class="tg-tategaki__col">木曜日の、</span><span class="tg-tategaki__col">ひと皿。</span></span><span lang="en">A plate <em>for Thursday</em></span></h3>
+            </div>
+            <p class="tg-tategaki__cap"><span lang="ja">一皿目</span><span lang="en">Plate one</span></p>
+          </div>
+        </li>
+        <li class="tg-tategaki__item tg-tategaki__item--2 reveal" style="--i:2">
+          <div class="tg-tategaki__stage">
+            <div class="tg-tategaki__shot">
+              <div class="tg-tategaki__frame">
+                <div class="tg-tategaki__light lightup" style="--lx:44%;--ly:42%">
+                  <img class="tg-tategaki__img" src="assets/img/thursday-2.jpg" width="801" height="508" loading="lazy" alt="薄切りのローストビーフに青菜をのせた一皿と、ブロッコリーの小鉢" data-en-alt="Sliced roast beef topped with fresh greens, with a small bowl of broccoli">
+                </div>
+                <span class="tg-tategaki__no" aria-hidden="true">02</span>
+              </div>
+              <h3 class="tg-tategaki__title"><span lang="ja"><span class="tg-tategaki__col">お酒と、</span><span class="tg-tategaki__col">ごはんと。</span></span><span lang="en">A glass, <em>and a plate</em></span></h3>
+            </div>
+            <p class="tg-tategaki__cap"><span lang="ja">二皿目</span><span lang="en">Plate two</span></p>
+          </div>
+        </li>
+        <li class="tg-tategaki__item tg-tategaki__item--3 reveal" style="--i:3">
+          <div class="tg-tategaki__stage">
+            <div class="tg-tategaki__shot">
+              <div class="tg-tategaki__frame">
+                <div class="tg-tategaki__light lightup" style="--lx:40%;--ly:60%">
+                  <img class="tg-tategaki__img" src="assets/img/thursday-3.jpg" width="800" height="512" loading="lazy" alt="焼いた白身魚に、レモンと大根おろし、大葉を添えて" data-en-alt="Grilled white fish with lemon, grated daikon and a shiso leaf">
+                </div>
+                <span class="tg-tategaki__no" aria-hidden="true">03</span>
+              </div>
+              <h3 class="tg-tategaki__title"><span lang="ja"><span class="tg-tategaki__col">ごゆっくり、</span><span class="tg-tategaki__col">どうぞ。</span></span><span lang="en">Take your time, <em>stay a while</em></span></h3>
+            </div>
+            <p class="tg-tategaki__cap"><span lang="ja">三皿目</span><span lang="en">Plate three</span></p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <a class="footer-brand" href="index.html"><img src="assets/img/logo.jpg" alt="" width="64" height="64"><span>BAR POCHI</span></a>
+      <p class="footer-info">
+        <span lang="ja">札幌市中央区南7条西4丁目2-7 ライトビルⅡ 地下1階</span><span lang="en">Light Bldg. II B1F, Minami 7-jo Nishi 4-chome 2-7, Chuo-ku, Sapporo</span><br>
+        <span lang="ja">営業時間 22:00〜ラスト／定休日 日曜日</span><span lang="en">Open 10:00 pm – late / Closed Sundays</span><br>
+        <span lang="ja">※日曜日もご相談により営業いたします</span><span lang="en">Sundays: open on request</span>
+      </p>
+    </div>
+    <nav class="footer-nav" aria-label="フッターメニュー" data-en-aria-label="Footer menu"><ul><li><a href="index.html"><span lang="ja">トップ</span><span lang="en">Home</span></a></li><li><a href="concept.html"><span lang="ja">コンセプト</span><span lang="en">Concept</span></a></li><li><a href="menu.html"><span lang="ja">メニュー</span><span lang="en">Menu</span></a></li><li><a href="thursday.html"><span lang="ja">木曜ごはん</span><span lang="en">Thursday Meals</span></a></li><li><a href="party.html"><span lang="ja">貸切・パーティー</span><span lang="en">Private Party</span></a></li><li><a href="access.html"><span lang="ja">アクセス</span><span lang="en">Access</span></a></li><li><a href="reserve.html"><span lang="ja">ご予約</span><span lang="en">Reservations</span></a></li><li><a href="https://www.instagram.com/__kiichanp__/" target="_blank" rel="noopener">Instagram</a></li></ul></nav>
+    <div class="footer-copy">
+      <p class="footer-vertical"><span lang="ja"><span>今夜すすきのの足元に、</span><span>ひそかな夜を。</span></span><span lang="en">Tonight, a secret night<br>beneath Susukino.</span></p>
+      <span class="footer-seal">BAR POCHI</span>
+    </div>
+  </div>
+  <p class="copyright">&copy; <span data-year>2026</span> BAR POCHI</p>
+</footer>
+<script src="assets/js/main.js?v=20261006-3" defer></script>
+</body>
+</html>
